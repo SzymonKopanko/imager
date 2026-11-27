@@ -14,6 +14,7 @@ decyzje leżą w podmodule `planning/` (repo `planning-imager`); tu jest kod.
 - `npm run build` — build produkcyjny (`out/`)
 - `npm run lint` — oxlint
 - `npm run test` — vitest (testy jednostkowe modułów głównych)
+- `npm run smoke` — build + uruchomienie Electron ze zrzutem ekranu (`out/main/smoke.png`) i automatycznym zamknięciem
 - `npm start` — Electron na buildzie (po `npm run build`)
 
 ## Struktura
