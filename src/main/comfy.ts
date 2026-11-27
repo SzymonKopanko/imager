@@ -78,11 +78,11 @@ export async function buildWorkflow(baseUrl: string, s: Settings, req: Generatio
     wf['3'] = { class_type: 'LoadImage', inputs: { image: name } }
     wf['9'] = { class_type: 'VAEEncode', inputs: { pixels: ['3', 0], vae: ['6', 0] } }
   } else {
-    // inpaint: obraz + maska (ten sam rozmiar)
+    // inpaint: obraz + maska RGB (biel = zachowaj, czerń = przegeneruj)
     const imgName = await uploadImage(baseUrl, req.inputImage ?? '', 'input.png')
     const maskName = await uploadImage(baseUrl, req.mask ?? '', 'mask.png')
     wf['3'] = { class_type: 'LoadImage', inputs: { image: imgName } }
-    wf['31'] = { class_type: 'LoadImage', inputs: { image: maskName } }
+    wf['31'] = { class_type: 'LoadImageMask', inputs: { image: maskName, channel: 'red' } }
     wf['9'] = { class_type: 'VAEEncode', inputs: { pixels: ['3', 0], vae: ['6', 0] } }
     wf['32'] = { class_type: 'SetLatentNoiseMask', inputs: { samples: ['9', 0], mask: ['31', 0] } }
     ;(wf['10'] as { inputs: Record<string, unknown> }).inputs.latent_image = ['32', 0]

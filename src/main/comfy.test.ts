@@ -54,6 +54,7 @@ describe('buildWorkflow', () => {
       mask: 'data:image/png;base64,AAAA',
     }
     const wf = await buildWorkflow('http://127.0.0.1:8188', s, req)
+    expect(wf['31']).toMatchObject({ class_type: 'LoadImageMask', inputs: { channel: 'red' } })
     expect(wf['32']).toMatchObject({ class_type: 'SetLatentNoiseMask' })
     expect((wf['10'] as { inputs: Record<string, unknown> }).inputs.latent_image).toEqual(['32', 0])
     expect(wf['9']).toMatchObject({ class_type: 'VAEEncode' })
