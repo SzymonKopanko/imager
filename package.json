@@ -1,0 +1,30 @@
+{
+  "name": "imager",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktopowa lokalna generacja obrazów: ComfyUI (Z-Image Turbo) + Ollama",
+  "main": "out/main/index.js",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "preview": "electron-vite preview",
+    "start": "electron .",
+    "smoke": "electron-vite build && cross-env IMAGER_SMOKE=1 electron .",
+    "lint": "oxlint src",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "cross-env": "^10.0.0",
+    "electron": "^37.0.0",
+    "electron-vite": "^4.0.0",
+    "oxlint": "^1.0.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^3.0.0"
+  }
+}
